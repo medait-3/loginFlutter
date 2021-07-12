@@ -7,7 +7,9 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(28.0),
         child: Center(
@@ -67,7 +69,7 @@ class Login extends StatelessWidget {
                 ),
                 Container(
                   width: double.infinity,
-                  color: Colors.blue,
+                  color: Colors.redAccent,
                   child: MaterialButton(
                     onPressed: () {},
                     child: Text(
