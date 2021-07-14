@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  bool passvisible = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.greenAccent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(28.0),
@@ -37,11 +43,23 @@ class Login extends StatelessWidget {
                     print(value); //one by one
                   },
                   decoration: InputDecoration(
-                      labelText: 'email Address',
-                      prefixIcon: Icon(
-                        Icons.email,
+                    labelText: 'email Address',
+                    labelStyle: TextStyle(color: Colors.greenAccent),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.greenAccent,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.greenAccent,
+                        width: 2.0,
                       ),
-                      border: OutlineInputBorder()),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 14.1,
@@ -49,7 +67,7 @@ class Login extends StatelessWidget {
                 TextFormField(
                   controller: passwordController,
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  obscureText: passvisible,
                   onFieldSubmitted: (String value) {
                     print(value); //click on submit
                   },
@@ -57,19 +75,38 @@ class Login extends StatelessWidget {
                     print(value); //one by one
                   },
                   decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(
-                        Icons.lock,
+                    labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.greenAccent),
+                    prefixIcon: Icon(Icons.lock, color: Colors.greenAccent),
+                    suffixIcon: IconButton(
+                      color: Colors.black,
+                      icon: Icon(passvisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          passvisible = !passvisible;
+                        });
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                        color: Colors.greenAccent,
+                        width: 2.0,
                       ),
-                      suffixIcon: Icon(Icons.remove_red_eye),
-                      border: OutlineInputBorder()),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 22.0,
                 ),
                 Container(
                   width: double.infinity,
-                  color: Colors.redAccent,
+                  color: Colors.greenAccent,
                   child: MaterialButton(
                     onPressed: () {},
                     child: Text(
@@ -89,7 +126,10 @@ class Login extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: Text('Register Now'),
+                      child: Text(
+                        'Register Now',
+                        style: TextStyle(color: Colors.greenAccent),
+                      ),
                     ),
                   ],
                 ),
